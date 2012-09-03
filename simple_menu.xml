@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ramenu>
+<menu position="1" label="Feeding">ReefAngel.FeedingModeStart();</menu>
+<menu position="2" label="Water Change">ReefAngel.WaterChangeModeStart();</menu>
+<menu position="3" label="ATO Clear">ReefAngel.ATOClear();</menu>
+<menu position="4" label="Overheat Clear">ReefAngel.OverheatClear();</menu>
+<menu position="5" label="PH Calibration">ReefAngel.SetupCalibratePH();\n
+ReefAngel.DisplayedMenu = ALT_SCREEN_MODE;</menu>
+<menu position="6" label="Version">ReefAngel.DisplayVersion();</menu>
+</ramenu>

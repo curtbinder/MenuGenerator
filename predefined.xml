@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<functions>
+<section label="Start">
+	<item label="Feeding Mode">ReefAngel.FeedingModeStart();</item>
+	<item label="Water Change">ReefAngel.WaterChangeModeStart();</item>
+</section>
+<section label="Clear">
+	<item label="ATO">ReefAngel.ATOClear();</item>
+	<item label="Overheat">ReefAngel.OverheatClear();</item>
+</section>
+<section label="Calibrate">
+	<item label="PH">ReefAngel.SetupCalibratePH();
+ReefAngel.DisplayedMenu = ALT_SCREEN_MODE;</item>
+	<item label="Salinity">ReefAngel.SetupCalibrateSalinity();
+ReefAngel.DisplayedMenu = ALT_SCREEN_MODE;</item>
+</section>
+<section label="Lights">
+	<item label="Turn On">
+ReefAngel.Relay.RelayMaskOn = ReefAngel.LightsOnPorts;
+#ifdef RelayExp
+for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )
+{
+    ReefAngel.Relay.RelayMaskOnE[i] = ReefAngel.LightsOnPortsE[i];
+}
+#endif  // RelayExp
+ReefAngel.Relay.Write();
+</item>
+	<item label="Turn Off">
+ReefAngel.Relay.RelayMaskOn = 0;
+#ifdef RelayExp
+for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )
+{
+    ReefAngel.Relay.RelayMaskOnE[i] = 0;
+}
+#endif  // RelayExp
+ReefAngel.Relay.Write();
+</item>
+</section>
+<item label="Set Date / Time">ReefAngel.SetupDateTime();
+ReefAngel.DisplayedMenu = ALT_SCREEN_MODE;</item>
+<item label="Display Text Entry">ReefAngel.DisplayMenuEntry("TEXT");</item>
+<item label="Display Version">ReefAngel.DisplayVersion();</item>
+<item label="Reset Watchdog">wdt_reset();</item>
+</functions>
