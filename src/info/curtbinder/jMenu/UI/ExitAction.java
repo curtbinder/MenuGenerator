@@ -17,7 +17,7 @@ public class ExitAction extends AbstractAction {
 	}
 
 	public ExitAction () {
-		putValue(NAME, "Exit");
+		putValue( NAME, "Exit" );
 	}
 
 }

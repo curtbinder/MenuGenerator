@@ -1,6 +1,7 @@
 package info.curtbinder.jMenu.UI;
 
 import info.curtbinder.jMenu.Classes.ClearFunctionAdapter;
+import info.curtbinder.jMenu.Classes.ControllerMenu;
 import info.curtbinder.jMenu.Classes.GenerateAdapter;
 import info.curtbinder.jMenu.Classes.LoadSimpleMenuAdapter;
 import info.curtbinder.jMenu.Classes.MenuEntryChangedAdapter;
@@ -34,6 +35,7 @@ public class MainFrame extends JFrame {
 	private JTextArea textCode;
 	private JTextField txtLabel;
 	private JComboBox cboMenuEntry;
+	private JComboBox cboMenuQty;
 	private JButton btnPredefinedFunctions;
 
 	public MainFrame () {
@@ -60,9 +62,10 @@ public class MainFrame extends JFrame {
 		Component rigidArea = Box.createRigidArea( new Dimension( 5, 5 ) );
 		horizontalBox.add( rigidArea );
 
-		JComboBox comboBox = new JComboBox();
-		comboBox.setMaximumRowCount( 9 );
-		comboBox.setModel( new DefaultComboBoxModel( new String[] { "1",
+		cboMenuQty = new JComboBox();
+		cboMenuQty.setMaximumRowCount( 9 );
+		cboMenuQty
+				.setModel( new DefaultComboBoxModel( new String[] { "1",
 																	"2",
 																	"3",
 																	"4",
@@ -71,11 +74,11 @@ public class MainFrame extends JFrame {
 																	"7",
 																	"8",
 																	"9" } ) );
-		comboBox.setSelectedIndex( 5 );
-		comboBox.setMaximumSize( new Dimension( 60, 20 ) );
-		comboBox.setPreferredSize( new Dimension( 60, 20 ) );
-		comboBox.addItemListener( new MenuQuantityChangedAdapter() );
-		horizontalBox.add( comboBox );
+		cboMenuQty.setSelectedIndex( 5 );
+		cboMenuQty.setMaximumSize( new Dimension( 60, 20 ) );
+		cboMenuQty.setPreferredSize( new Dimension( 60, 20 ) );
+		cboMenuQty.addItemListener( new MenuQuantityChangedAdapter() );
+		horizontalBox.add( cboMenuQty );
 
 		Component horizontalGlue = Box.createHorizontalGlue();
 		horizontalBox.add( horizontalGlue );
@@ -199,9 +202,16 @@ public class MainFrame extends JFrame {
 	}
 
 	public void resetMenuEntryList ( ) {
+		System.out.println("Reset Menu Entry List");
 		cboMenuEntry.removeAllItems();
 		cboMenuEntry.setModel( MenuApp.getController().getMenuEntryComboList() );
 		cboMenuEntry.setSelectedIndex( 0 );
+	}
+
+	public void setMenuQuantity ( int qty ) {
+		// qty is to be 1 based
+		// setSelectedIndex is 0 based
+		cboMenuQty.setSelectedIndex( qty - 1 );
 	}
 
 	public String getMenuEntryCode ( ) {
@@ -211,6 +221,10 @@ public class MainFrame extends JFrame {
 	public void setMenuEntryCode ( String code ) {
 		textCode.setText( code );
 	}
+	
+	public void updateMenuEntryCode ( String code ) {
+		textCode.append( code );
+	}
 
 	public String getMenuEntryLabel ( ) {
 		return txtLabel.getText();
@@ -218,6 +232,22 @@ public class MainFrame extends JFrame {
 
 	public void setMenuEntryLabel ( String label ) {
 		txtLabel.setText( label );
+	}
+
+	public void updateDisplay ( ) {
+		updateCurrentCodeAndLabel(getCurrentMenuEntry());
+	}
+	
+	public void resetMenuLabelAndCode ( ) {
+		System.out.println("Reset Menu Label and Code");
+		updateCurrentCodeAndLabel(1);
+	}
+	
+	private void updateCurrentCodeAndLabel ( int pos ) {
+		// pos is 1 based
+		ControllerMenu c = MenuApp.getController();
+		setMenuEntryLabel( c.getMenuLabel( pos ) );
+		setMenuEntryCode( c.getMenuCode( pos ) );
 	}
 
 	public JButton getPredefinedButton ( ) {

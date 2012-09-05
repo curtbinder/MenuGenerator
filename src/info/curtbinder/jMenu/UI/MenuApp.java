@@ -22,6 +22,7 @@ public class MenuApp {
 				try {
 					frame = new MainFrame();
 					frame.setVisible( true );
+					frame.updateDisplay();
 				} catch ( Exception e ) {
 					e.printStackTrace();
 				}
@@ -37,10 +38,10 @@ public class MenuApp {
 		return controller;
 	}
 
-	public static void displayMessageBox ( String message ) {
+	public static void displayMessageBox ( String message, String title ) {
 		JOptionPane.showMessageDialog(	frame,
 										message,
-										"Message",
+										title,
 										JOptionPane.INFORMATION_MESSAGE );
 	}
 

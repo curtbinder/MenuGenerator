@@ -16,8 +16,11 @@ public class MenuQuantityChangedAdapter implements ItemListener {
 		if ( arg0.getStateChange() == ItemEvent.SELECTED ) {
 			ControllerMenu c = MenuApp.getController();
 			MainFrame f = MenuApp.getFrame();
+			System.out.println("Changed to " + i + " entries");
 			c.setMenuQuantity( i );
 			f.resetMenuEntryList();
+			// reload the code window
+			f.resetMenuLabelAndCode();
 		}
 	}
 }

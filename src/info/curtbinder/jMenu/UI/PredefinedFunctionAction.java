@@ -5,8 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 
-public class PredefinedFunctionAction  extends AbstractAction
- {
+public class PredefinedFunctionAction extends AbstractAction {
 
 	/**
 	 * 
@@ -14,7 +13,7 @@ public class PredefinedFunctionAction  extends AbstractAction
 	private static final long serialVersionUID = 1L;
 
 	public PredefinedFunctionAction () {
-		 putValue(NAME, "Predefined Functions");
+		putValue( NAME, "Predefined Functions" );
 	}
 
 	@Override
