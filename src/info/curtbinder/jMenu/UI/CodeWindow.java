@@ -2,6 +2,11 @@ package info.curtbinder.jMenu.UI;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
-public class CodeWindow extends JDialog {
+public class CodeWindow extends JDialog implements ClipboardOwner {
 
 	/**
 	 * 
@@ -46,6 +51,18 @@ public class CodeWindow extends JDialog {
 
 		Component horizontalGlue = Box.createHorizontalGlue();
 		horizontalBox.add( horizontalGlue );
+		
+		JButton btnCopyToClipboard = new JButton("Copy to Clipboard");
+		btnCopyToClipboard.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed ( ActionEvent e ) {
+				copyText();	
+			}
+		});
+		horizontalBox.add(btnCopyToClipboard);
+		
+		Component rigidArea_2 = Box.createRigidArea(new Dimension(5, 5));
+		verticalBox.add(rigidArea_2);
 
 		JScrollPane codeWindow = new JScrollPane();
 		codeWindow
@@ -111,7 +128,21 @@ public class CodeWindow extends JDialog {
 		textCode.setText( sb.toString() );
 	}
 	
+	public String getCodeText ( ) {
+		return textCode.getText();
+	}
+	
 	public void setCodeSetup ( String s ) {
 		setupCode.setText( s );
+	}
+
+	@Override
+	public void lostOwnership ( Clipboard arg0, Transferable arg1 ) {		
+	}
+	
+	protected void copyText ( ) {
+		StringSelection sel = new StringSelection( getCodeText() );
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	    clipboard.setContents( sel, this );
 	}
 }
