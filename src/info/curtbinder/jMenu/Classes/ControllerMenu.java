@@ -79,7 +79,6 @@ public class ControllerMenu {
 	}
 
 	public void saveCurrentEntry ( ) {
-		System.out.println( "save current entry" );
 		// call before generating or saving file
 		// save current menu entry
 		MainFrame f = MenuApp.getFrame();
@@ -164,7 +163,6 @@ public class ControllerMenu {
 	}
 
 	public void resetMenu ( ) {
-		System.out.println( "Reset Menu" );
 		iMenuQuantity = DEFAULT_ENTRIES;
 		loadInitialMenu();
 	}
@@ -182,7 +180,6 @@ public class ControllerMenu {
 	}
 
 	public void loadSimpleMenu ( ) {
-		System.out.println( "Load simple menu" );
 		iMenuQuantity = DEFAULT_ENTRIES;
 		saLabels[0] = "Feeding";
 		saCode[0] = "ReefAngel.FeedingModeStart();\r\n";
@@ -237,7 +234,6 @@ public class ControllerMenu {
 		for ( Window dlg : dialogs ) {
 			if ( dlg.getClass().equals( CodeWindow.class ) ) {
 				if ( dlg.isDisplayable() ) {
-					System.out.println( "found textdialog" );
 					cw = (CodeWindow) dlg;
 					canProceed = false;
 				}

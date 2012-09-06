@@ -202,7 +202,6 @@ public class MainFrame extends JFrame {
 	}
 
 	public void resetMenuEntryList ( ) {
-		System.out.println("Reset Menu Entry List");
 		cboMenuEntry.removeAllItems();
 		cboMenuEntry.setModel( MenuApp.getController().getMenuEntryComboList() );
 		cboMenuEntry.setSelectedIndex( 0 );
@@ -239,7 +238,6 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void resetMenuLabelAndCode ( ) {
-		System.out.println("Reset Menu Label and Code");
 		updateCurrentCodeAndLabel(1);
 	}
 	
