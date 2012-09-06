@@ -56,7 +56,7 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		btnCopyToClipboard.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed ( ActionEvent e ) {
-				copyText();	
+				copyText(true);	
 			}
 		});
 		horizontalBox.add(btnCopyToClipboard);
@@ -89,7 +89,19 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		horizontalBox_1.add( horizontalGlue_1 );
+		
+		JButton btnCopyToClipboard_1 = new JButton("Copy to Clipboard");
+		btnCopyToClipboard_1.addActionListener( new ActionListener() {
+			@Override
+			public void actionPerformed ( ActionEvent e ) {
+				copyText(false);	
+			}
+		});
+		horizontalBox_1.add(btnCopyToClipboard_1);
 
+		Component rigidArea_3 = Box.createRigidArea(new Dimension(5, 5));
+		verticalBox.add(rigidArea_3);
+		
 		JScrollPane initWindow = new JScrollPane();
 		initWindow.setPreferredSize(new Dimension(23, 50));
 		initWindow.setMaximumSize(new Dimension(32767, 50));
@@ -128,10 +140,6 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		textCode.setText( sb.toString() );
 	}
 	
-	public String getCodeText ( ) {
-		return textCode.getText();
-	}
-	
 	public void setCodeSetup ( String s ) {
 		setupCode.setText( s );
 	}
@@ -140,8 +148,13 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 	public void lostOwnership ( Clipboard arg0, Transferable arg1 ) {		
 	}
 	
-	protected void copyText ( ) {
-		StringSelection sel = new StringSelection( getCodeText() );
+	protected void copyText ( boolean fCodeText ) {
+		StringSelection sel = null;
+		if ( fCodeText )
+			sel = new StringSelection( textCode.getText() );
+		else
+			sel = new StringSelection( setupCode.getText() );
+		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	    clipboard.setContents( sel, this );
 	}
