@@ -23,7 +23,9 @@ public class MenuBar extends JMenuBar {
 		super();
 
 		JMenu mnFile = new JMenu( "File" );
+		JMenu mnHelp = new JMenu( "Help" );
 		add( mnFile );
+		add( mnHelp );
 
 		JMenuItem mntmExit = new JMenuItem( new ExitAction() );
 		JMenuItem mntmSave = new JMenuItem( new SaveAction() );
@@ -31,6 +33,9 @@ public class MenuBar extends JMenuBar {
 		mnFile.add( mntmSave );
 		mnFile.addSeparator();
 		mnFile.add( mntmExit );
+		
+		JMenuItem mntmAbout = new JMenuItem( new AboutAction() );
+		mnHelp.add( mntmAbout );
 	}
 
 }

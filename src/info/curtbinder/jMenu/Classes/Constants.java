@@ -10,6 +10,11 @@ package info.curtbinder.jMenu.Classes;
 
 public class Constants {
 
+	public static final int versionMajor = 1;
+	public static final int versionMinor = 0;
+	public static final int versionRevision = 0;
+	public static final String versionBuild = "Beta 1";
+	
 	public static String xmlMenuStart = "ramenu";
 	public static String xmlMenu = "menu";
 	public static String xmlAttributeLabel = "label";
