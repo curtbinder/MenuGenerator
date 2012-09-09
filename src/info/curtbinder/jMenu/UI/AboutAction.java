@@ -27,12 +27,11 @@ public class AboutAction extends AbstractAction {
 	public void actionPerformed ( ActionEvent e ) {
 		AboutDialog d =
 				new AboutDialog( MenuApp.getFrame(), null, "Menu Generator",
-					"Generates a custom menu for the Reef Angel" );
+					"Custom menu generator for the Reef Angel controller" );
 		d.setAppVersion(	Constants.versionMajor, Constants.versionMinor,
 							Constants.versionRevision, Constants.versionBuild );
 		d.setCopyright( "Copyright 2012 Curt Binder" );
-		// d.setBanner( new ImageIcon( MainFrame.class.getResource(
-		// Globals.bannerIconName ) ) );
+		d.setBanner( new ImageIcon( MainFrame.class.getResource( Constants.bannerIconName ) ) );
 		d.setURL( "http://curtbinder.info/" );
 		d.setCreditors( new String[] { "Curt Binder" } );
 		d.setLicense( "This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. "

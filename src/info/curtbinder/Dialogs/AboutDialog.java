@@ -38,7 +38,7 @@ public class AboutDialog extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 2285475934781331947L;
-	private static final int minWidth = 350;
+	private static final int minWidth = 360;
 	private static final int minHeight = 300;
 	private JLabel lblAppIcon = new JLabel();
 	private JLabel lblAppName = new JLabel( "APP NAME" );
@@ -139,8 +139,7 @@ public class AboutDialog extends JDialog {
 		btnCredits.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
 		btnCredits.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
-				TextDialog d =
-						new TextDialog( aDlg, "Credits", "Contributors" );
+				TextDialog d = new TextDialog( aDlg, "Credits", "Contributors" );
 				d.setWindowList( aDlg.arrayCredits );
 				d.showDialog();
 			}
@@ -149,8 +148,7 @@ public class AboutDialog extends JDialog {
 		btnLicense.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
 				TextDialog d =
-						new TextDialog( aDlg, "License", "Legal Text", 300,
-							200 );
+						new TextDialog( aDlg, "License", "Legal Text", 300, 200 );
 				d.setWindowText( aDlg.sLicense );
 				d.showDialog();
 			}

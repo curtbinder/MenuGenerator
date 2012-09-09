@@ -15,6 +15,8 @@ public class Constants {
 	public static final int versionRevision = 0;
 	public static final String versionBuild = "Beta 1";
 	
+	public static final String bannerIconName = "/images/cb_h_banner-medium.png";
+	
 	public static String xmlMenuStart = "ramenu";
 	public static String xmlMenu = "menu";
 	public static String xmlAttributeLabel = "label";
