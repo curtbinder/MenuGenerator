@@ -23,8 +23,8 @@ public class ResetMenuAdapter implements ActionListener {
 		int ret =
 				JOptionPane
 						.showConfirmDialog( MenuApp.getFrame(),
-											"This will reset your menu completely.\n\nAre you sure?",
-											"Reset Menu",
+											Messages.getString( "ResetMenuAdapter.ResetDescription" ), //$NON-NLS-1$
+											Messages.getString( "ResetMenuAdapter.Reset" ), //$NON-NLS-1$
 											JOptionPane.YES_NO_OPTION );
 		if ( ret == JOptionPane.NO_OPTION ) {
 			return;

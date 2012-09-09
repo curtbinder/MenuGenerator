@@ -9,6 +9,7 @@ package info.curtbinder.jMenu.UI;
  */
 
 import info.curtbinder.jMenu.Classes.ClearFunctionAdapter;
+import info.curtbinder.jMenu.Classes.Constants;
 import info.curtbinder.jMenu.Classes.ControllerMenu;
 import info.curtbinder.jMenu.Classes.GenerateAdapter;
 import info.curtbinder.jMenu.Classes.LoadSimpleMenuAdapter;
@@ -48,7 +49,7 @@ public class MainFrame extends JFrame {
 
 	public MainFrame () {
 		setMinimumSize( new Dimension( 450, 300 ) );
-		setTitle( "Menu Generator" );
+		setTitle( Constants.appTitle );
 		setBounds( 100, 100, 600, 435 );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
@@ -64,7 +65,8 @@ public class MainFrame extends JFrame {
 		Box horizontalBox = Box.createHorizontalBox();
 		verticalBox.add( horizontalBox );
 
-		JLabel lblMenuEntries = new JLabel( "Menu Entries:" );
+		JLabel lblMenuEntries =
+				new JLabel( Messages.getString( "MainFrame.MenuEntries" ) ); //$NON-NLS-1$
 		horizontalBox.add( lblMenuEntries );
 
 		Component rigidArea = Box.createRigidArea( new Dimension( 5, 5 ) );
@@ -73,15 +75,15 @@ public class MainFrame extends JFrame {
 		cboMenuQty = new JComboBox();
 		cboMenuQty.setMaximumRowCount( 9 );
 		cboMenuQty
-				.setModel( new DefaultComboBoxModel( new String[] { "1",
-																	"2",
-																	"3",
-																	"4",
-																	"5",
-																	"6",
-																	"7",
-																	"8",
-																	"9" } ) );
+				.setModel( new DefaultComboBoxModel( new String[] { "1", //$NON-NLS-1$
+																	"2", //$NON-NLS-1$
+																	"3", //$NON-NLS-1$
+																	"4", //$NON-NLS-1$
+																	"5", //$NON-NLS-1$
+																	"6", //$NON-NLS-1$
+																	"7", //$NON-NLS-1$
+																	"8", //$NON-NLS-1$
+																	"9" } ) ); //$NON-NLS-1$
 		cboMenuQty.setSelectedIndex( 5 );
 		cboMenuQty.setMaximumSize( new Dimension( 60, 20 ) );
 		cboMenuQty.setPreferredSize( new Dimension( 60, 20 ) );
@@ -91,14 +93,16 @@ public class MainFrame extends JFrame {
 		Component horizontalGlue = Box.createHorizontalGlue();
 		horizontalBox.add( horizontalGlue );
 
-		JButton btnReset = new JButton( "Reset Menu" );
+		JButton btnReset =
+				new JButton( Messages.getString( "MainFrame.ResetMenu" ) ); //$NON-NLS-1$
 		btnReset.addActionListener( new ResetMenuAdapter() );
 		horizontalBox.add( btnReset );
 
 		Component rigidArea_1 = Box.createRigidArea( new Dimension( 5, 5 ) );
 		horizontalBox.add( rigidArea_1 );
 
-		JButton btnLoadSimpleMenu = new JButton( "Load Simple Menu" );
+		JButton btnLoadSimpleMenu =
+				new JButton( Messages.getString( "MainFrame.LoadSimpleMenu" ) ); //$NON-NLS-1$
 		btnLoadSimpleMenu.addActionListener( new LoadSimpleMenuAdapter() );
 		horizontalBox.add( btnLoadSimpleMenu );
 
@@ -131,7 +135,8 @@ public class MainFrame extends JFrame {
 		horizontalBox_2.setAlignmentY( Component.CENTER_ALIGNMENT );
 		verticalBox_1.add( horizontalBox_2 );
 
-		JLabel lblMenuLabel = new JLabel( "Menu Label:" );
+		JLabel lblMenuLabel =
+				new JLabel( Messages.getString( "MainFrame.MenuLabel" ) ); //$NON-NLS-1$
 		lblMenuLabel.setAlignmentX( Component.CENTER_ALIGNMENT );
 		horizontalBox_2.add( lblMenuLabel );
 
@@ -148,7 +153,7 @@ public class MainFrame extends JFrame {
 		horizontalBox_2.add( rigidArea_4 );
 
 		JLabel lblmaxCharacters =
-				new JLabel( "(Max of 20 characters for label)" );
+				new JLabel( Messages.getString( "MainFrame.MaxLabel" ) ); //$NON-NLS-1$
 		lblmaxCharacters.setAlignmentX( Component.CENTER_ALIGNMENT );
 		horizontalBox_2.add( lblmaxCharacters );
 
@@ -158,7 +163,8 @@ public class MainFrame extends JFrame {
 		Box horizontalBox_3 = Box.createHorizontalBox();
 		verticalBox_1.add( horizontalBox_3 );
 
-		JLabel lblEnterMenuCode = new JLabel( "Enter menu code below:" );
+		JLabel lblEnterMenuCode =
+				new JLabel( Messages.getString( "MainFrame.MenuCode" ) ); //$NON-NLS-1$
 		lblEnterMenuCode.setAlignmentY( Component.TOP_ALIGNMENT );
 		horizontalBox_3.add( lblEnterMenuCode );
 
@@ -171,7 +177,8 @@ public class MainFrame extends JFrame {
 		Component rigidArea_5 = Box.createRigidArea( new Dimension( 5, 5 ) );
 		horizontalBox_3.add( rigidArea_5 );
 
-		JButton btnClearFunction = new JButton( "Clear Function" );
+		JButton btnClearFunction =
+				new JButton( Messages.getString( "MainFrame.ClearFunction" ) ); //$NON-NLS-1$
 		btnClearFunction.addActionListener( new ClearFunctionAdapter() );
 		horizontalBox_3.add( btnClearFunction );
 
@@ -199,7 +206,8 @@ public class MainFrame extends JFrame {
 		Component horizontalGlue_4 = Box.createHorizontalGlue();
 		horizontalBox_4.add( horizontalGlue_4 );
 
-		JButton btnGenerate = new JButton( "Generate" );
+		JButton btnGenerate =
+				new JButton( Messages.getString( "MainFrame.Generate" ) ); //$NON-NLS-1$
 		btnGenerate.addActionListener( new GenerateAdapter() );
 		horizontalBox_4.add( btnGenerate );
 	}
@@ -228,7 +236,7 @@ public class MainFrame extends JFrame {
 	public void setMenuEntryCode ( String code ) {
 		textCode.setText( code );
 	}
-	
+
 	public void updateMenuEntryCode ( String code ) {
 		textCode.append( code );
 	}
@@ -242,13 +250,13 @@ public class MainFrame extends JFrame {
 	}
 
 	public void updateDisplay ( ) {
-		updateCurrentCodeAndLabel(getCurrentMenuEntry());
+		updateCurrentCodeAndLabel( getCurrentMenuEntry() );
 	}
-	
+
 	public void resetMenuLabelAndCode ( ) {
-		updateCurrentCodeAndLabel(1);
+		updateCurrentCodeAndLabel( 1 );
 	}
-	
+
 	private void updateCurrentCodeAndLabel ( int pos ) {
 		// pos is 1 based
 		ControllerMenu c = MenuApp.getController();

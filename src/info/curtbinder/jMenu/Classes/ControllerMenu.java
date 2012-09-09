@@ -59,7 +59,8 @@ public class ControllerMenu {
 		String[] l = new String[iMenuQuantity];
 		String s;
 		for ( int i = 0; i < iMenuQuantity; i++ ) {
-			s = String.format( "Menu Entry %d", i + 1 );
+			s =
+					String.format(	Messages.getString( "ControllerMenu.MenuEntryFormat" ), i + 1 ); //$NON-NLS-1$
 			l[i] = s;
 		}
 		DefaultComboBoxModel aModel = new DefaultComboBoxModel( l );
@@ -113,18 +114,18 @@ public class ControllerMenu {
 			String ext = XMLFileFilter.getExtension( f );
 			if ( ext == null ) {
 				// didn't give an extension, add the extension
-				path += "." + XMLFileFilter.XML_EXTENSION;
+				path += "." + XMLFileFilter.XML_EXTENSION; //$NON-NLS-1$
 			}
 
 			if ( f.exists() ) {
 				String s =
-						"'"
-								+ path
-								+ "' exists\n\nDo you wish to overwrite this file?";
+						String.format(	Messages.getString( "ControllerMenu.OverwriteFileFormat" ), //$NON-NLS-1$
+										path );
 				int ret =
 						JOptionPane
-								.showConfirmDialog( MenuApp.getFrame(), s,
-													"Overwrite file",
+								.showConfirmDialog( MenuApp.getFrame(),
+													s,
+													Messages.getString( "ControllerMenu.OverwriteFile" ), //$NON-NLS-1$
 													JOptionPane.YES_NO_OPTION );
 				if ( ret == JOptionPane.NO_OPTION ) {
 					return;
@@ -136,13 +137,13 @@ public class ControllerMenu {
 				OutputStream os;
 				os = new FileOutputStream( path );
 				XMLOutputFactory of = XMLOutputFactory.newInstance();
-				XMLStreamWriter w = of.createXMLStreamWriter( os, "utf-8" );
-				w.writeStartDocument( "utf-8", "1.0" );
+				XMLStreamWriter w = of.createXMLStreamWriter( os, "utf-8" ); //$NON-NLS-1$
+				w.writeStartDocument( "utf-8", "1.0" ); //$NON-NLS-1$ //$NON-NLS-2$
 				w.writeStartElement( Constants.xmlMenuStart );
 
 				String pos;
 				for ( int i = 0; i < iMenuQuantity; i++ ) {
-					pos = String.format( "%d", i + 1 );
+					pos = String.format( "%d", i + 1 ); //$NON-NLS-1$
 					w.writeStartElement( Constants.xmlMenu );
 					w.writeAttribute( Constants.xmlAtributePosition, pos );
 					w.writeAttribute( Constants.xmlAttributeLabel, saLabels[i] );
@@ -162,11 +163,14 @@ public class ControllerMenu {
 
 			String msg;
 			if ( fComplete ) {
-				msg = "Successfully saved:\n\n " + path;
+				msg =
+						Messages.getString( "ControllerMenu.SuccessullySaved" ) + path; //$NON-NLS-1$
 			} else {
-				msg = "Failed to save:\n\n" + path;
+				msg =
+						Messages.getString( "ControllerMenu.FailedToSave" ) + path; //$NON-NLS-1$
 			}
-			MenuApp.displayMessageBox( msg, "Saved file" );
+			MenuApp.displayMessageBox( msg, Messages
+					.getString( "ControllerMenu.SavedFile" ) ); //$NON-NLS-1$
 		}
 	}
 
@@ -178,64 +182,65 @@ public class ControllerMenu {
 	private void loadInitialMenu ( ) {
 		String s;
 		for ( int i = 0; i < MAX_MENU_ENTRIES; i++ ) {
-			s = String.format( "Menu Entry %d", i + 1 );
-			saLabels[i] = s;
 			s =
-					String.format(	"ReefAngel.DisplayMenuEntry(\"Item %d\");",
-									i + 1 );
+					String.format(	Messages.getString( "ControllerMenu.MenuEntryFormat" ), i + 1 ); //$NON-NLS-1$
+			saLabels[i] = s;
+			s = String.format( "ReefAngel.DisplayMenuEntry(\"Item %d\");", //$NON-NLS-1$
+								i + 1 );
 			saCode[i] = s;
 		}
 	}
 
 	public void loadSimpleMenu ( ) {
 		iMenuQuantity = DEFAULT_ENTRIES;
-		saLabels[0] = "Feeding";
-		saCode[0] = "ReefAngel.FeedingModeStart();\r\n";
-		saLabels[1] = "Water Change";
-		saCode[1] = "ReefAngel.WaterChangeModeStart();\r\n";
-		saLabels[2] = "ATO Clear";
+		saLabels[0] = Messages.getString( "ControllerMenu.FeedingFunction" ); //$NON-NLS-1$
+		saCode[0] = "ReefAngel.FeedingModeStart();\r\n"; //$NON-NLS-1$
+		saLabels[1] = Messages.getString( "ControllerMenu.WaterChangeFunction" ); //$NON-NLS-1$
+		saCode[1] = "ReefAngel.WaterChangeModeStart();\r\n"; //$NON-NLS-1$
+		saLabels[2] = Messages.getString( "ControllerMenu.ATOClearFunction" ); //$NON-NLS-1$
 		saCode[2] =
-				"ReefAngel.ATOClear();\r\nReefAngel.DisplayMenuEntry(\"Clear ATO Timeout\");\r\n";
-		saLabels[3] = "Overheat Clear";
+				"ReefAngel.ATOClear();\r\nReefAngel.DisplayMenuEntry(\"Clear ATO Timeout\");\r\n"; //$NON-NLS-1$
+		saLabels[3] =
+				Messages.getString( "ControllerMenu.OverheatClearFunction" ); //$NON-NLS-1$
 		saCode[3] =
-				"ReefAngel.OverheatClear();\r\nReefAngel.DisplayMenuEntry(\"Clear Overheat\");\r\n";
-		saLabels[4] = "PH Calibration";
+				"ReefAngel.OverheatClear();\r\nReefAngel.DisplayMenuEntry(\"Clear Overheat\");\r\n"; //$NON-NLS-1$
+		saLabels[4] =
+				Messages.getString( "ControllerMenu.PHCalibrationFunction" ); //$NON-NLS-1$
 		saCode[4] =
-				"ReefAngel.SetupCalibratePH();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n";
-		saLabels[5] = "Version";
-		saCode[5] = "ReefAngel.DisplayVersion();\r\n";
+				"ReefAngel.SetupCalibratePH();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n"; //$NON-NLS-1$
+		saLabels[5] = Messages.getString( "ControllerMenu.VersionFunction" ); //$NON-NLS-1$
+		saCode[5] = "ReefAngel.DisplayVersion();\r\n"; //$NON-NLS-1$
 	}
 
 	public void generateCode ( ) {
 		// generate the output code for the menus
 		StringBuilder sb = new StringBuilder( 8192 );
 		StringBuilder sbCode = new StringBuilder( 4096 );
-		String sLabels = "";
-		String sMenus = "PROGMEM const char *menu_items[] = {\r\n";
+		String sLabels = ""; //$NON-NLS-1$
+		String sMenus = "PROGMEM const char *menu_items[] = {\r\n"; //$NON-NLS-1$
 		String s;
-		sb.append( "#include <avr/pgmspace.h>\r\n" );
+		sb.append( "#include <avr/pgmspace.h>\r\n" ); //$NON-NLS-1$
 		for ( int i = 0; i < iMenuQuantity; i++ ) {
 			s =
-					String.format(	"prog_char menu%d_label[] PROGMEM = \"%s\";\r\n",
+					String.format(	"prog_char menu%d_label[] PROGMEM = \"%s\";\r\n", //$NON-NLS-1$
 									i, saLabels[i] );
 			sLabels += s;
-			s =
-					String.format(	"menu%d_label%c ", i,
-									(i + 1 == iMenuQuantity) ? ' ' : ',' );
+			s = String.format( "menu%d_label%c ", i, //$NON-NLS-1$
+								(i + 1 == iMenuQuantity) ? ' ' : ',' );
 			sMenus += s;
-			s = String.format( "void MenuEntry%d()\r\n{\r\n", i + 1 );
+			s = String.format( "void MenuEntry%d()\r\n{\r\n", i + 1 ); //$NON-NLS-1$
 			sbCode.append( s );
 			sbCode.append( saCode[i] );
-			sbCode.append( "\r\n}\r\n" );
+			sbCode.append( "\r\n}\r\n" ); //$NON-NLS-1$
 		}
-		sMenus += "};\r\n\r\n";
+		sMenus += "};\r\n\r\n"; //$NON-NLS-1$
 
 		sb.append( sLabels );
 		sb.append( sMenus );
 		sb.append( sbCode );
 
 		String sInit =
-				"// Initialize the menu\r\nReefAngel.InitMenu(pgm_read_word(&(menu_items[0])),SIZE(menu_items));";
+				"// Initialize the menu\r\nReefAngel.InitMenu(pgm_read_word(&(menu_items[0])),SIZE(menu_items));"; //$NON-NLS-1$
 		CodeWindow cw = null;
 		boolean canProceed = true;
 		Window[] dialogs = JDialog.getWindows();
@@ -251,7 +256,7 @@ public class ControllerMenu {
 			}
 		}
 		if ( canProceed ) {
-			cw = new CodeWindow ( MenuApp.getFrame() );
+			cw = new CodeWindow( MenuApp.getFrame() );
 		}
 		cw.setCodeText( sb );
 		cw.setCodeSetup( sInit );

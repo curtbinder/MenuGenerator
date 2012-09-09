@@ -40,9 +40,9 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 
 	public CodeWindow ( JFrame mainFrame ) {
 		super( mainFrame );
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
 		setMinimumSize( new Dimension( 500, 400 ) );
-		setTitle( "Output Code" );
+		setTitle( Messages.getString( "CodeWindow.OutputCode" ) ); //$NON-NLS-1$
 		getContentPane().setLayout( new BoxLayout( getContentPane(),
 										BoxLayout.X_AXIS ) );
 
@@ -54,23 +54,24 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		verticalBox.add( horizontalBox );
 
 		JLabel lblGlobalCode =
-				new JLabel( "Enter this code in the Globals section:" );
+				new JLabel( Messages.getString( "CodeWindow.OutputDescription" ) ); //$NON-NLS-1$
 		horizontalBox.add( lblGlobalCode );
 
 		Component horizontalGlue = Box.createHorizontalGlue();
 		horizontalBox.add( horizontalGlue );
-		
-		JButton btnCopyToClipboard = new JButton("Copy to Clipboard");
+
+		JButton btnCopyToClipboard =
+				new JButton( Messages.getString( "CodeWindow.CopyClipboard" ) ); //$NON-NLS-1$
 		btnCopyToClipboard.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed ( ActionEvent e ) {
-				copyText(true);	
+				copyText( true );
 			}
-		});
-		horizontalBox.add(btnCopyToClipboard);
-		
-		Component rigidArea_2 = Box.createRigidArea(new Dimension(5, 5));
-		verticalBox.add(rigidArea_2);
+		} );
+		horizontalBox.add( btnCopyToClipboard );
+
+		Component rigidArea_2 = Box.createRigidArea( new Dimension( 5, 5 ) );
+		verticalBox.add( rigidArea_2 );
 
 		JScrollPane codeWindow = new JScrollPane();
 		codeWindow
@@ -91,29 +92,29 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		verticalBox.add( horizontalBox_1 );
 
 		JLabel lblSetupCode =
-				new JLabel(
-					"Enter this code in the setup function after ReefAngel.init():" );
+				new JLabel( Messages.getString( "CodeWindow.SetupCode" ) ); //$NON-NLS-1$
 		horizontalBox_1.add( lblSetupCode );
 
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		horizontalBox_1.add( horizontalGlue_1 );
-		
-		JButton btnCopyToClipboard_1 = new JButton("Copy to Clipboard");
+
+		JButton btnCopyToClipboard_1 =
+				new JButton( Messages.getString( "CodeWindow.CopyClipboard" ) ); //$NON-NLS-1$
 		btnCopyToClipboard_1.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed ( ActionEvent e ) {
-				copyText(false);	
+				copyText( false );
 			}
-		});
-		horizontalBox_1.add(btnCopyToClipboard_1);
+		} );
+		horizontalBox_1.add( btnCopyToClipboard_1 );
 
-		Component rigidArea_3 = Box.createRigidArea(new Dimension(5, 5));
-		verticalBox.add(rigidArea_3);
-		
+		Component rigidArea_3 = Box.createRigidArea( new Dimension( 5, 5 ) );
+		verticalBox.add( rigidArea_3 );
+
 		JScrollPane initWindow = new JScrollPane();
-		initWindow.setPreferredSize(new Dimension(23, 50));
-		initWindow.setMaximumSize(new Dimension(32767, 50));
-		initWindow.setMinimumSize(new Dimension(23, 50));
+		initWindow.setPreferredSize( new Dimension( 23, 50 ) );
+		initWindow.setMaximumSize( new Dimension( 32767, 50 ) );
+		initWindow.setMinimumSize( new Dimension( 23, 50 ) );
 		initWindow
 				.setHorizontalScrollBarPolicy( ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER );
 		initWindow.setAutoscrolls( true );
@@ -134,7 +135,8 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		Component horizontalGlue_2 = Box.createHorizontalGlue();
 		horizontalBox_2.add( horizontalGlue_2 );
 
-		JButton btnClose = new JButton( "Close" );
+		JButton btnClose =
+				new JButton( Messages.getString( "CodeWindow.Close" ) ); //$NON-NLS-1$
 		btnClose.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
 				setVisible( false );
@@ -143,27 +145,27 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 		} );
 		horizontalBox_2.add( btnClose );
 	}
-	
+
 	public void setCodeText ( StringBuilder sb ) {
 		textCode.setText( sb.toString() );
 	}
-	
+
 	public void setCodeSetup ( String s ) {
 		setupCode.setText( s );
 	}
 
 	@Override
-	public void lostOwnership ( Clipboard arg0, Transferable arg1 ) {		
+	public void lostOwnership ( Clipboard arg0, Transferable arg1 ) {
 	}
-	
+
 	protected void copyText ( boolean fCodeText ) {
 		StringSelection sel = null;
 		if ( fCodeText )
 			sel = new StringSelection( textCode.getText() );
 		else
 			sel = new StringSelection( setupCode.getText() );
-		
+
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-	    clipboard.setContents( sel, this );
+		clipboard.setContents( sel, this );
 	}
 }

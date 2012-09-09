@@ -10,19 +10,24 @@ package info.curtbinder.jMenu.Classes;
 
 public class Constants {
 
+	public static final String appTitle = Messages
+			.getString( "Constants.appTitle" ); //$NON-NLS-1$
+
 	public static final int versionMajor = 1;
 	public static final int versionMinor = 0;
 	public static final int versionRevision = 0;
-	public static final String versionBuild = "Beta 1";
-	
-	public static final String bannerIconName = "/images/cb_h_banner-medium.png";
-	
-	public static String xmlMenuStart = "ramenu";
-	public static String xmlMenu = "menu";
-	public static String xmlAttributeLabel = "label";
-	public static String xmlAtributePosition = "position";
-	
-	public static String xmlFunctionStart = "functions";
-	public static String xmlSection = "section";
-	public static String xmlItem = "item";
+	public static final String versionBuild = Messages
+			.getString( "Constants.versionBuild" ); //$NON-NLS-1$
+
+	public static final String bannerIconName =
+			"/images/cb_h_banner-medium.png"; //$NON-NLS-1$
+
+	public static String xmlMenuStart = "ramenu"; //$NON-NLS-1$
+	public static String xmlMenu = "menu"; //$NON-NLS-1$
+	public static String xmlAttributeLabel = "label"; //$NON-NLS-1$
+	public static String xmlAtributePosition = "position"; //$NON-NLS-1$
+
+	public static String xmlFunctionStart = "functions"; //$NON-NLS-1$
+	public static String xmlSection = "section"; //$NON-NLS-1$
+	public static String xmlItem = "item"; //$NON-NLS-1$
 }

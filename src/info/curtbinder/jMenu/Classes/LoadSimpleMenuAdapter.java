@@ -23,8 +23,8 @@ public class LoadSimpleMenuAdapter implements ActionListener {
 		int ret =
 				JOptionPane
 						.showConfirmDialog( MenuApp.getFrame(),
-											"This will replace your menu with the simple menu.\n\nAre you sure?",
-											"Load Simple Menu",
+											Messages.getString( "LoadSimpleMenuAdapter.SimpleMenuDescription" ), //$NON-NLS-1$
+											Messages.getString( "LoadSimpleMenuAdapter.SimpleMenu" ), //$NON-NLS-1$
 											JOptionPane.YES_NO_OPTION );
 		if ( ret == JOptionPane.NO_OPTION ) {
 			return;

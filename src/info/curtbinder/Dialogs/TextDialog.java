@@ -53,7 +53,7 @@ public class TextDialog extends JDialog {
 
 		setTitle( title );
 		JLabel lblDialogLabel = new JLabel( description );
-		lblDialogLabel.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		lblDialogLabel.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 
 		textWindow = new JScrollPane();
 		textWindow.setAlignmentX( Component.LEFT_ALIGNMENT );
@@ -63,8 +63,8 @@ public class TextDialog extends JDialog {
 		buttonPanel.setLayout( new BoxLayout( buttonPanel, BoxLayout.X_AXIS ) );
 		buttonPanel.setAlignmentY( Component.BOTTOM_ALIGNMENT );
 		buttonPanel.setAlignmentX( Component.LEFT_ALIGNMENT );
-		JButton btnClose = new JButton( "Close" );
-		btnClose.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		JButton btnClose = new JButton( Messages.getString( "Dialog.Close" ) ); //$NON-NLS-1$
+		btnClose.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		btnClose.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
 				setVisible( false );

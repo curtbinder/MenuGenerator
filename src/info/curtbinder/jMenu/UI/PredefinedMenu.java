@@ -22,60 +22,100 @@ public class PredefinedMenu extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 
 	PredefinedMenu () {
-		setLabel( "Label" );
-		JMenu start = new JMenu( "Start" );
-		JMenuItem feed = new JMenuItem( "Feeding Mode" );
-		feed.addActionListener( new AddFunctionAdapter("ReefAngel.FeedingModeStart();\r\n") );
-		JMenuItem water = new JMenuItem( "Water Change" );
-		water.addActionListener( new AddFunctionAdapter("ReefAngel.WaterChangeModeStart();\r\n") );
+		setLabel( "Label" ); //$NON-NLS-1$
+		JMenu start = new JMenu( Messages.getString( "PredefinedMenu.Start" ) ); //$NON-NLS-1$
+		JMenuItem feed =
+				new JMenuItem( Messages.getString( "PredefinedMenu.Feeding" ) ); //$NON-NLS-1$
+		feed.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.FeedingModeStart();\r\n" ) ); //$NON-NLS-1$
+		JMenuItem water =
+				new JMenuItem(
+					Messages.getString( "PredefinedMenu.WaterChange" ) ); //$NON-NLS-1$
+		water.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.WaterChangeModeStart();\r\n" ) ); //$NON-NLS-1$
 		start.add( feed );
 		start.add( water );
-		JMenu clear = new JMenu( "Clear" );
-		JMenuItem ato = new JMenuItem( "ATO" );
-		ato.addActionListener( new AddFunctionAdapter("ReefAngel.ATOClear();\r\n") );
-		JMenuItem overheat = new JMenuItem( "Overheat" );
-		overheat.addActionListener( new AddFunctionAdapter("ReefAngel.OverheatClear();\r\n") );
+		JMenu clear = new JMenu( Messages.getString( "PredefinedMenu.Clear" ) ); //$NON-NLS-1$
+		JMenuItem ato =
+				new JMenuItem( Messages.getString( "PredefinedMenu.ATO" ) ); //$NON-NLS-1$
+		ato.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.ATOClear();\r\n" ) ); //$NON-NLS-1$
+		JMenuItem overheat =
+				new JMenuItem( Messages.getString( "PredefinedMenu.Overheat" ) ); //$NON-NLS-1$
+		overheat.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.OverheatClear();\r\n" ) ); //$NON-NLS-1$
 		clear.add( ato );
 		clear.add( overheat );
-		JMenu calibrate = new JMenu( "Calibrate" );
-		JMenuItem ph = new JMenuItem( "PH" );
-		ph.addActionListener( new AddFunctionAdapter("ReefAngel.SetupCalibratePH();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n") );
-		JMenuItem salinity = new JMenuItem( "Salinity" );
-		salinity.addActionListener( new AddFunctionAdapter("ReefAngel.SetupCalibrateSalinity();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n") );
+		JMenu calibrate =
+				new JMenu( Messages.getString( "PredefinedMenu.Calibrate" ) ); //$NON-NLS-1$
+		JMenuItem ph =
+				new JMenuItem( Messages.getString( "PredefinedMenu.PH" ) ); //$NON-NLS-1$
+		ph.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.SetupCalibratePH();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n" ) ); //$NON-NLS-1$
+		JMenuItem salinity =
+				new JMenuItem( Messages.getString( "PredefinedMenu.Salinity" ) ); //$NON-NLS-1$
+		salinity.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.SetupCalibrateSalinity();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n" ) ); //$NON-NLS-1$
 		calibrate.add( ph );
 		calibrate.add( salinity );
-		JMenu lights = new JMenu( "Lights" );
-		JMenuItem on = new JMenuItem( "Turn On" );
-		on.addActionListener( new AddFunctionAdapter("" +
-"ReefAngel.Relay.RelayMaskOn = ReefAngel.LightsOnPorts;\r\n" +
-"#ifdef RelayExp\r\n" +
-"for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )\r\n" +
-"{\r\n" +
-"    ReefAngel.Relay.RelayMaskOnE[i] = ReefAngel.LightsOnPortsE[i];\r\n" +
-"}\r\n" +
-"#endif  // RelayExp\r\n" +
-"ReefAngel.Relay.Write();\r\n") );
-		JMenuItem off = new JMenuItem( "Turn Off" );
-		off.addActionListener( new AddFunctionAdapter("" +
-"ReefAngel.Relay.RelayMaskOn = 0;\r\n" +
-"#ifdef RelayExp\r\n" +
-"for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )\r\n" +
-"{\r\n" +
-"    ReefAngel.Relay.RelayMaskOnE[i] = 0;\r\n" +
-"}\r\n" +
-"#endif  // RelayExp\r\n" +
-"ReefAngel.Relay.Write();\r\n") );
+		JMenu lights =
+				new JMenu( Messages.getString( "PredefinedMenu.Lights" ) ); //$NON-NLS-1$
+		JMenuItem on =
+				new JMenuItem( Messages.getString( "PredefinedMenu.TurnOn" ) ); //$NON-NLS-1$
+		on.addActionListener( new AddFunctionAdapter( "" + //$NON-NLS-1$
+														"ReefAngel.Relay.RelayMaskOn = ReefAngel.LightsOnPorts;\r\n"
+														+ //$NON-NLS-1$
+														"#ifdef RelayExp\r\n"
+														+ //$NON-NLS-1$
+														"for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )\r\n"
+														+ //$NON-NLS-1$
+														"{\r\n"
+														+ //$NON-NLS-1$
+														"    ReefAngel.Relay.RelayMaskOnE[i] = ReefAngel.LightsOnPortsE[i];\r\n"
+														+ //$NON-NLS-1$
+														"}\r\n"
+														+ //$NON-NLS-1$
+														"#endif  // RelayExp\r\n"
+														+ //$NON-NLS-1$
+														"ReefAngel.Relay.Write();\r\n" ) ); //$NON-NLS-1$
+		JMenuItem off =
+				new JMenuItem( Messages.getString( "PredefinedMenu.TurnOff" ) ); //$NON-NLS-1$
+		off.addActionListener( new AddFunctionAdapter( "" + //$NON-NLS-1$
+														"ReefAngel.Relay.RelayMaskOn = 0;\r\n"
+														+ //$NON-NLS-1$
+														"#ifdef RelayExp\r\n"
+														+ //$NON-NLS-1$
+														"for ( byte i = 0; i < MAX_RELAY_EXPANSION_MODULES; i++ )\r\n"
+														+ //$NON-NLS-1$
+														"{\r\n"
+														+ //$NON-NLS-1$
+														"    ReefAngel.Relay.RelayMaskOnE[i] = 0;\r\n"
+														+ //$NON-NLS-1$
+														"}\r\n"
+														+ //$NON-NLS-1$
+														"#endif  // RelayExp\r\n"
+														+ //$NON-NLS-1$
+														"ReefAngel.Relay.Write();\r\n" ) ); //$NON-NLS-1$
 		lights.add( on );
 		lights.add( off );
 
-		JMenuItem dt = new JMenuItem( "Set Date / Time" );
-		dt.addActionListener( new AddFunctionAdapter("ReefAngel.SetupDateTime();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n") );
-		JMenuItem display_text = new JMenuItem( "Display Text Entry" );
-		display_text.addActionListener( new AddFunctionAdapter("ReefAngel.DisplayMenuEntry(\"TEXT\");\r\n") );
-		JMenuItem display_version = new JMenuItem( "Display Version" );
-		display_version.addActionListener( new AddFunctionAdapter("ReefAngel.DisplayVersion();\r\n") );
-		JMenuItem reset_watchdog = new JMenuItem( "Reset Watchdog" );
-		reset_watchdog.addActionListener( new AddFunctionAdapter("wdt_reset();\r\n") );
+		JMenuItem dt =
+				new JMenuItem(
+					Messages.getString( "PredefinedMenu.SetDateTime" ) ); //$NON-NLS-1$
+		dt.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.SetupDateTime();\r\nReefAngel.DisplayedMenu = ALT_SCREEN_MODE;\r\n" ) ); //$NON-NLS-1$
+		JMenuItem display_text = new JMenuItem( "Display Text Entry" ); //$NON-NLS-1$
+		display_text.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.DisplayMenuEntry(\"TEXT\");\r\n" ) ); //$NON-NLS-1$
+		JMenuItem display_version =
+				new JMenuItem( Messages.getString( "PredefinedMenu.Version" ) ); //$NON-NLS-1$
+		display_version.addActionListener( new AddFunctionAdapter(
+			"ReefAngel.DisplayVersion();\r\n" ) ); //$NON-NLS-1$
+		JMenuItem reset_watchdog =
+				new JMenuItem(
+					Messages.getString( "PredefinedMenu.ResetWatchdog" ) ); //$NON-NLS-1$
+		reset_watchdog.addActionListener( new AddFunctionAdapter(
+			"wdt_reset();\r\n" ) ); //$NON-NLS-1$
 
 		add( start );
 		add( clear );

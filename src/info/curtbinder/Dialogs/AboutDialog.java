@@ -41,14 +41,16 @@ public class AboutDialog extends JDialog {
 	private static final int minWidth = 360;
 	private static final int minHeight = 300;
 	private JLabel lblAppIcon = new JLabel();
-	private JLabel lblAppName = new JLabel( "APP NAME" );
-	private JLabel lblAppVersion = new JLabel( "" );
-	private JLabel lblDescription = new JLabel( "Description of app" );
-	private JLabel lblCopyright = new JLabel( "Copyright 2012" );
+	private JLabel lblAppName = new JLabel( "APP NAME" ); //$NON-NLS-1$
+	private JLabel lblAppVersion = new JLabel( "" ); //$NON-NLS-1$
+	private JLabel lblDescription = new JLabel( "Description of app" ); //$NON-NLS-1$
+	private JLabel lblCopyright = new JLabel( "Copyright 2012" ); //$NON-NLS-1$
 	private JLabel lblBanner = new JLabel();
 	private JLabel lblUrl = new JLabel();
-	private JButton btnCredits = new JButton( "Credits" );
-	private JButton btnLicense = new JButton( "License" );
+	private JButton btnCredits = new JButton(
+		Messages.getString( "AboutDialog.Credits" ) ); //$NON-NLS-1$
+	private JButton btnLicense = new JButton(
+		Messages.getString( "AboutDialog.License" ) ); //$NON-NLS-1$
 	private String[] arrayCredits = new String[0];
 	private String sLicense = new String();
 
@@ -85,11 +87,11 @@ public class AboutDialog extends JDialog {
 		infoPanel.add( Box.createVerticalStrut( 5 ) );
 		setDescription( description );
 		lblDescription.setAlignmentX( Component.CENTER_ALIGNMENT );
-		lblDescription.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		lblDescription.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		infoPanel.add( lblDescription );
 		infoPanel.add( Box.createVerticalStrut( 5 ) );
 		lblCopyright.setAlignmentX( Component.CENTER_ALIGNMENT );
-		lblCopyright.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		lblCopyright.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		infoPanel.add( lblCopyright );
 		infoPanel.add( Box.createVerticalStrut( 5 ) );
 		// add banner
@@ -105,27 +107,27 @@ public class AboutDialog extends JDialog {
 				java.awt.Desktop d = java.awt.Desktop.getDesktop();
 				java.net.URI url;
 				try {
-					System.out.print( "Create URL: " + lblUrl.getText() + "\n" );
+					System.out.print( "Create URL: " + lblUrl.getText() + "\n" ); //$NON-NLS-1$ //$NON-NLS-2$
 					url = new java.net.URI( lblUrl.getText() );
 				} catch ( URISyntaxException e1 ) {
 					// invalid URL
 					JOptionPane.showMessageDialog(	aDlg,
-													"Error with URL:\n"
+													Messages.getString( "AboutDialog.ErrorWithURL" ) //$NON-NLS-1$
 															+ lblUrl.getText(),
-													"Invalid URL",
+													Messages.getString( "AboutDialog.InvalidURL" ), //$NON-NLS-1$
 													JOptionPane.INFORMATION_MESSAGE );
 					return;
 				}
 				try {
-					System.out.print( "Launch browser: " + url.toString()
-										+ "\n" );
+					System.out.print( "Launch browser: " + url.toString() //$NON-NLS-1$
+										+ "\n" ); //$NON-NLS-1$
 					d.browse( url );
 				} catch ( IOException e1 ) {
 					// error loading URL
 					JOptionPane.showMessageDialog(	aDlg,
-													"Error loading URL:\n"
+													Messages.getString( "AboutDialog.ErrorLoadingURL" ) //$NON-NLS-1$
 															+ lblUrl.getText(),
-													"Error Loading",
+													Messages.getString( "AboutDialog.ErrorLoading" ), //$NON-NLS-1$
 													JOptionPane.INFORMATION_MESSAGE );
 				}
 			}
@@ -136,25 +138,30 @@ public class AboutDialog extends JDialog {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout( new BoxLayout( buttonPanel, BoxLayout.X_AXIS ) );
 		buttonPanel.setAlignmentY( Component.BOTTOM_ALIGNMENT );
-		btnCredits.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		btnCredits.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		btnCredits.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
-				TextDialog d = new TextDialog( aDlg, "Credits", "Contributors" );
+				TextDialog d =
+						new TextDialog(
+							aDlg,
+							Messages.getString( "AboutDialog.Credits" ), Messages.getString( "AboutDialog.Contributors" ) ); //$NON-NLS-1$ //$NON-NLS-2$
 				d.setWindowList( aDlg.arrayCredits );
 				d.showDialog();
 			}
 		} );
-		btnLicense.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		btnLicense.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		btnLicense.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
 				TextDialog d =
-						new TextDialog( aDlg, "License", "Legal Text", 300, 200 );
+						new TextDialog(
+							aDlg,
+							Messages.getString( "AboutDialog.License" ), Messages.getString( "AboutDialog.LegalText" ), 300, 200 ); //$NON-NLS-1$ //$NON-NLS-2$
 				d.setWindowText( aDlg.sLicense );
 				d.showDialog();
 			}
 		} );
-		JButton btnClose = new JButton( "Close" );
-		btnClose.setFont( new Font( "Dialog", Font.PLAIN, 12 ) );
+		JButton btnClose = new JButton( Messages.getString( "Dialog.Close" ) ); //$NON-NLS-1$
+		btnClose.setFont( new Font( "Dialog", Font.PLAIN, 12 ) ); //$NON-NLS-1$
 		btnClose.addActionListener( new ActionListener() {
 			public void actionPerformed ( ActionEvent ev ) {
 				setVisible( false );
@@ -176,13 +183,13 @@ public class AboutDialog extends JDialog {
 
 	void setAppName ( String appName ) {
 		lblAppName.setText( appName );
-		setTitle( "About " + appName );
+		setTitle( Messages.getString( "AboutDialog.About" ) + appName ); //$NON-NLS-1$
 	}
 
 	public void setAppVersion ( int major, int minor, int revision, String build ) {
-		String v = major + "." + minor + "." + revision;
+		String v = major + "." + minor + "." + revision; //$NON-NLS-1$ //$NON-NLS-2$
 		if ( !build.isEmpty() ) {
-			v += "-" + build;
+			v += "-" + build; //$NON-NLS-1$
 		}
 		lblAppVersion.setText( v );
 	}

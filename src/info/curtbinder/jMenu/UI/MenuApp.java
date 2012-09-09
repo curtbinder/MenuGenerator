@@ -24,7 +24,7 @@ public class MenuApp {
 	 */
 	public static void main ( String[] args ) {
 		controller = new ControllerMenu();
-		
+
 		EventQueue.invokeLater( new Runnable() {
 			public void run ( ) {
 				try {
@@ -37,19 +37,17 @@ public class MenuApp {
 			}
 		} );
 	}
-	
+
 	public static MainFrame getFrame ( ) {
 		return frame;
 	}
-	
+
 	public static ControllerMenu getController ( ) {
 		return controller;
 	}
 
 	public static void displayMessageBox ( String message, String title ) {
-		JOptionPane.showMessageDialog(	frame,
-										message,
-										title,
+		JOptionPane.showMessageDialog(	frame, message, title,
 										JOptionPane.INFORMATION_MESSAGE );
 	}
 

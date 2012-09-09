@@ -13,8 +13,8 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 public class XMLFileFilter extends FileFilter {
-	
-	public static String XML_EXTENSION = "xml";
+
+	public static String XML_EXTENSION = "xml"; //$NON-NLS-1$
 
 	@Override
 	public boolean accept ( File f ) {
@@ -33,7 +33,7 @@ public class XMLFileFilter extends FileFilter {
 
 	@Override
 	public String getDescription ( ) {
-		return "XML File (*.xml)";
+		return "XML File (*.xml)"; //$NON-NLS-1$
 	}
 
 	public static String getExtension ( File f ) {

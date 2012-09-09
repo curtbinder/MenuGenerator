@@ -18,7 +18,7 @@ public class ClearFunctionAdapter implements ActionListener {
 	@Override
 	public void actionPerformed ( ActionEvent arg0 ) {
 		// clear the current code in the window
-		MenuApp.getFrame().setMenuEntryCode( "" );
+		MenuApp.getFrame().setMenuEntryCode( "" ); //$NON-NLS-1$
 	}
 
 }

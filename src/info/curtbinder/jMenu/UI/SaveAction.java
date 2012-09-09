@@ -20,7 +20,7 @@ public class SaveAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 
 	public SaveAction () {
-		putValue( NAME, "Save to XML..." );
+		putValue( NAME, Messages.getString( "SaveAction.SaveXML" ) ); //$NON-NLS-1$
 	}
 
 	@Override

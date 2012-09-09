@@ -21,7 +21,7 @@ public class MenuEntryChangedAdapter implements ItemListener {
 		// 2 events fired with change
 		// a DESELECTED is fired first then a SELECTED is fired second
 		String item = (String) arg0.getItem();
-		String[] words = item.split( " " );
+		String[] words = item.split( " " ); //$NON-NLS-1$
 		int i = Integer.parseInt( words[words.length - 1] );
 		ControllerMenu c = MenuApp.getController();
 		MainFrame f = MenuApp.getFrame();

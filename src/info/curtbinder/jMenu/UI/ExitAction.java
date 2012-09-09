@@ -25,7 +25,7 @@ public class ExitAction extends AbstractAction {
 	}
 
 	public ExitAction () {
-		putValue( NAME, "Exit" );
+		putValue( NAME, Messages.getString( "ExitAction.Exit" ) ); //$NON-NLS-1$
 	}
 
 }

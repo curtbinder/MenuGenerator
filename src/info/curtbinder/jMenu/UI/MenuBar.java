@@ -22,18 +22,18 @@ public class MenuBar extends JMenuBar {
 	public MenuBar () {
 		super();
 
-		JMenu mnFile = new JMenu( "File" );
-		JMenu mnHelp = new JMenu( "Help" );
+		JMenu mnFile = new JMenu( Messages.getString( "MenuBar.FileMenu" ) ); //$NON-NLS-1$
+		JMenu mnHelp = new JMenu( Messages.getString( "MenuBar.HelpMenu" ) ); //$NON-NLS-1$
 		add( mnFile );
 		add( mnHelp );
 
 		JMenuItem mntmExit = new JMenuItem( new ExitAction() );
 		JMenuItem mntmSave = new JMenuItem( new SaveAction() );
-		
+
 		mnFile.add( mntmSave );
 		mnFile.addSeparator();
 		mnFile.add( mntmExit );
-		
+
 		JMenuItem mntmAbout = new JMenuItem( new AboutAction() );
 		mnHelp.add( mntmAbout );
 	}

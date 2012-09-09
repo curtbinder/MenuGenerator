@@ -21,7 +21,8 @@ public class PredefinedFunctionAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 
 	public PredefinedFunctionAction () {
-		putValue( NAME, "Predefined Functions" );
+		putValue(	NAME,
+					Messages.getString( "PredefinedFunctionAction.PredefinedFunctions" ) ); //$NON-NLS-1$
 	}
 
 	@Override

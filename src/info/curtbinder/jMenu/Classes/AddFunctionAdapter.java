@@ -20,10 +20,10 @@ public class AddFunctionAdapter extends AbstractAction {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private String code = ""; 
-	
-	public AddFunctionAdapter( String code ) {
+
+	private String code = ""; //$NON-NLS-1$
+
+	public AddFunctionAdapter ( String code ) {
 		this.code = code;
 	}
 

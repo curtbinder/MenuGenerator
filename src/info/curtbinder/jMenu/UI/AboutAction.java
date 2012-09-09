@@ -26,22 +26,23 @@ public class AboutAction extends AbstractAction {
 	@Override
 	public void actionPerformed ( ActionEvent e ) {
 		AboutDialog d =
-				new AboutDialog( MenuApp.getFrame(), null, "Menu Generator",
-					"Custom menu generator for the Reef Angel controller" );
+				new AboutDialog( MenuApp.getFrame(), null, Constants.appTitle,
+					Messages.getString( "AboutAction.AppDescription" ) ); //$NON-NLS-1$
 		d.setAppVersion(	Constants.versionMajor, Constants.versionMinor,
 							Constants.versionRevision, Constants.versionBuild );
-		d.setCopyright( "Copyright 2012 Curt Binder" );
-		d.setBanner( new ImageIcon( MainFrame.class.getResource( Constants.bannerIconName ) ) );
-		d.setURL( "http://curtbinder.info/" );
-		d.setCreditors( new String[] { "Curt Binder" } );
-		d.setLicense( "This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. "
-						+ "To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 444 Castro Street, "
-						+ "Suite 900, Mountain View, California, 94041, USA." );
+		d.setCopyright( Messages.getString( "AboutAction.Copyright" ) ); //$NON-NLS-1$
+		d.setBanner( new ImageIcon( MainFrame.class
+				.getResource( Constants.bannerIconName ) ) );
+		d.setURL( "http://curtbinder.info/" ); //$NON-NLS-1$
+		d.setCreditors( new String[] { "Curt Binder" } ); //$NON-NLS-1$
+		d.setLicense( Messages.getString( "AboutAction.License1" ) //$NON-NLS-1$
+						+ Messages.getString( "AboutAction.License2" ) //$NON-NLS-1$
+						+ Messages.getString( "AboutAction.License3" ) ); //$NON-NLS-1$
 		d.showAbout();
 	}
 
 	public AboutAction () {
-		putValue( NAME, "About" );
+		putValue( NAME, Messages.getString( "AboutAction.About" ) ); //$NON-NLS-1$
 	}
 
 }
