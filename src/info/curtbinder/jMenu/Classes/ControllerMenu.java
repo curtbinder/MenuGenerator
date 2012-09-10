@@ -231,10 +231,14 @@ public class ControllerMenu {
 				w.writeEndElement();
 				w.writeEndDocument();
 				w.flush();
+				w.close();
+				os.close();
 				fComplete = true;
 			} catch ( FileNotFoundException e ) {
 				e.printStackTrace();
 			} catch ( XMLStreamException e ) {
+				e.printStackTrace();
+			} catch ( IOException e ) {
 				e.printStackTrace();
 			}
 
