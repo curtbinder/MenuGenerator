@@ -41,10 +41,10 @@ public class AboutDialog extends JDialog {
 	private static final int minWidth = 360;
 	private static final int minHeight = 300;
 	private JLabel lblAppIcon = new JLabel();
-	private JLabel lblAppName = new JLabel( "APP NAME" ); //$NON-NLS-1$
+	private JLabel lblAppName = new JLabel( "" ); //$NON-NLS-1$
 	private JLabel lblAppVersion = new JLabel( "" ); //$NON-NLS-1$
-	private JLabel lblDescription = new JLabel( "Description of app" ); //$NON-NLS-1$
-	private JLabel lblCopyright = new JLabel( "Copyright 2012" ); //$NON-NLS-1$
+	private JLabel lblDescription = new JLabel( "" ); //$NON-NLS-1$
+	private JLabel lblCopyright = new JLabel( "" ); //$NON-NLS-1$
 	private JLabel lblBanner = new JLabel();
 	private JLabel lblUrl = new JLabel();
 	private JButton btnCredits = new JButton(
