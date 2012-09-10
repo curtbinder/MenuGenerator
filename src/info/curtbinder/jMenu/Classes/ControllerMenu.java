@@ -13,18 +13,30 @@ import info.curtbinder.jMenu.UI.MainFrame;
 import info.curtbinder.jMenu.UI.MenuApp;
 
 import java.awt.Window;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+
+import org.xml.sax.ContentHandler;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
 public class ControllerMenu {
 
@@ -98,7 +110,72 @@ public class ControllerMenu {
 
 	// add in Load / Save
 	public void loadXML ( ) {
+		JFileChooser chooser = new JFileChooser();
+		chooser.setFileSelectionMode( JFileChooser.FILES_ONLY );
+		chooser.setAcceptAllFileFilterUsed( false );
+		chooser.addChoosableFileFilter( new XMLFileFilter() );
+		int option = chooser.showOpenDialog( MenuApp.getFrame() );
+		if ( option == JFileChooser.APPROVE_OPTION ) {
+			// clicked Save
+			File f = chooser.getSelectedFile();
+			System.out.println( "Chose file: " + f.getAbsolutePath() );
 
+			FileReader fr;
+			try {
+				// open the file
+				fr = new FileReader( f );
+				BufferedReader in = new BufferedReader( fr );
+
+				// parse through XML file handler
+				LoadXMLHandler xf = new LoadXMLHandler();
+				if ( parseXML( xf, in ) ) {
+					// successful parsing
+					// save the menu
+					setMenuQuantity( xf.getMenuQuantity() );
+					for ( int i = 1; i <= xf.getMenuQuantity(); i++ ) {
+						setMenuLabel( i, xf.getLabel( i ) );
+						setMenuCode( i, xf.getCode( i ) );
+					}
+					// reload the menu
+					MenuApp.getFrame().resetMenuLabelAndCode();
+					MenuApp.getFrame().resetMenuEntryList();
+					MenuApp.getFrame().setMenuQuantity( xf.getMenuQuantity() );
+				}
+
+				if ( in != null ) {
+					in.close();
+				}
+				if ( fr != null ) {
+					fr.close();
+				}
+			} catch ( FileNotFoundException e ) {
+				e.printStackTrace();
+			} catch ( IOException e ) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private boolean parseXML ( LoadXMLHandler xf, BufferedReader in ) {
+		boolean fRet = false;
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		SAXParser sp = null;
+		XMLReader xr = null;
+		try {
+			sp = spf.newSAXParser();
+			xr = sp.getXMLReader();
+			xr.setContentHandler( (ContentHandler) xf );
+			xr.setErrorHandler( (ErrorHandler) xf );
+			xr.parse( new InputSource( in ) );
+			fRet = true;
+		} catch ( ParserConfigurationException e ) {
+			e.printStackTrace();
+		} catch ( SAXException e ) {
+			e.printStackTrace();
+		} catch ( IOException e ) {
+			e.printStackTrace();
+		}
+		return fRet;
 	}
 
 	public void saveXML ( ) {

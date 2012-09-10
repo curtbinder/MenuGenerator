@@ -29,7 +29,9 @@ public class MenuBar extends JMenuBar {
 
 		JMenuItem mntmExit = new JMenuItem( new ExitAction() );
 		JMenuItem mntmSave = new JMenuItem( new SaveAction() );
+		JMenuItem mntmLoad = new JMenuItem( new LoadAction() );
 
+		mnFile.add( mntmLoad );
 		mnFile.add( mntmSave );
 		mnFile.addSeparator();
 		mnFile.add( mntmExit );
