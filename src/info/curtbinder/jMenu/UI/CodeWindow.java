@@ -41,7 +41,7 @@ public class CodeWindow extends JDialog implements ClipboardOwner {
 	public CodeWindow ( JFrame mainFrame ) {
 		super( mainFrame );
 		setDefaultCloseOperation( JDialog.DISPOSE_ON_CLOSE );
-		setMinimumSize( new Dimension( 500, 400 ) );
+		setMinimumSize( new Dimension( 600, 400 ) );
 		setTitle( Messages.getString( "CodeWindow.OutputCode" ) ); //$NON-NLS-1$
 		getContentPane().setLayout( new BoxLayout( getContentPane(),
 										BoxLayout.X_AXIS ) );

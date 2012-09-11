@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
 	private JButton btnPredefinedFunctions;
 
 	public MainFrame () {
-		setMinimumSize( new Dimension( 450, 300 ) );
+		setMinimumSize( new Dimension( 600, 300 ) );
 		setTitle( Constants.appTitle );
 		setBounds( 100, 100, 600, 435 );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
