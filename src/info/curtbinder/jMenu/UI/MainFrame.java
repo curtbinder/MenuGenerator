@@ -85,8 +85,8 @@ public class MainFrame extends JFrame {
 																	"8", //$NON-NLS-1$
 																	"9" } ) ); //$NON-NLS-1$
 		cboMenuQty.setSelectedIndex( 5 );
-		cboMenuQty.setMaximumSize( new Dimension( 60, 20 ) );
-		cboMenuQty.setPreferredSize( new Dimension( 60, 20 ) );
+		cboMenuQty.setMaximumSize( new Dimension( 60, 24 ) );
+		cboMenuQty.setPreferredSize( new Dimension( 60, 24 ) );
 		cboMenuQty.addItemListener( new MenuQuantityChangedAdapter() );
 		horizontalBox.add( cboMenuQty );
 
@@ -121,8 +121,8 @@ public class MainFrame extends JFrame {
 		cboMenuEntry.addItemListener( mec );
 		cboMenuEntry.setModel( MenuApp.getController().getMenuEntryComboList() );
 		cboMenuEntry.setMaximumRowCount( 9 );
-		cboMenuEntry.setPreferredSize( new Dimension( 200, 20 ) );
-		cboMenuEntry.setMaximumSize( new Dimension( 260, 20 ) );
+		cboMenuEntry.setPreferredSize( new Dimension( 200, 24 ) );
+		cboMenuEntry.setMaximumSize( new Dimension( 260, 24 ) );
 		horizontalBox_1.add( cboMenuEntry );
 
 		Component horizontalGlue_1 = Box.createHorizontalGlue();

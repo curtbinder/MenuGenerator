@@ -26,7 +26,9 @@ public class AboutAction extends AbstractAction {
 	@Override
 	public void actionPerformed ( ActionEvent e ) {
 		AboutDialog d =
-				new AboutDialog( MenuApp.getFrame(), null, Constants.appTitle,
+				new AboutDialog( MenuApp.getFrame(), new ImageIcon(
+					MainFrame.class.getResource( Constants.appIconName ) ),
+					Constants.appTitle,
 					Messages.getString( "AboutAction.AppDescription" ) ); //$NON-NLS-1$
 		d.setAppVersion(	Constants.versionMajor, Constants.versionMinor,
 							Constants.versionRevision, Constants.versionBuild );

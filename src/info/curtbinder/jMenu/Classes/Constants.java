@@ -21,6 +21,8 @@ public class Constants {
 
 	public static final String bannerIconName =
 			"/images/cb_h_banner-medium.png"; //$NON-NLS-1$
+	public static final String appIconName = 
+			"/images/Menu.png"; //$NON-NLS-1$
 
 	public static String xmlMenuStart = "ramenu"; //$NON-NLS-1$
 	public static String xmlMenu = "menu"; //$NON-NLS-1$
